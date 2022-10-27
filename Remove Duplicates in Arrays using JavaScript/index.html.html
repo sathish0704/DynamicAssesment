@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicates in Array</title>
+</head>
+
+<body style="text-align: center;">
+
+    <h1 style="color: green;">Remove Duplicates in Array</h1>
+    <h3 id="po">Enter Array Elements Separated by Comma</h3>
+    <h3 id="po">(for example: 1,5,74,4,4,1) </h3>
+
+    <form class="" action="index.html" method="post">
+        <input type="text" id="array" value="" /><br><br>
+        <button type="button" name="button" onclick="Submit()">
+            Submit
+        </button>
+    </form><br>
+
+    <p id="currarr"></p>
+    <p id="par"></p><br>
+    <p id="resarr"></p>
+    <p id="result"></p>
+
+    <script type="text/javascript">
+        function Submit() {            
+            var input = document.getElementById("array");
+            input = input.value.split(",").map(function (item) {
+                return parseInt(item, 10);
+            });
+            console.log(removingDups(input));
+            console.log(Array.from(input.values()));
+            document.getElementById("currarr").innerHTML = "Given Input array is: ";
+            document.getElementById("par").innerHTML = Array.from(input.values());
+            document.getElementById("resarr").innerHTML = "After removing Duplicates: ";
+            document.getElementById("result").innerHTML = removingDups(input);
+            document.getElementById("po").innerHTML = "Output";
+        }
+
+        function removingDups(input) {
+            var set = new Set(input);
+            var res = Array.from(set.values());
+            return res;
+        }
+
+    </script>
+
+</body>
+
+</html>
