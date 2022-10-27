@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html 
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+
+<body>
+<div align = "center">
+<form th:action="@{/logout}" method="post">
+			<p>
+				Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+			</p>
+			<input type="submit" value="Sign Out" />
+		</form>
+	<h2 align = "center">Product Manager</h2>
+	<tr>
+		<div align = "left" >		   
+		     <h3 align = "center"><a  th:href="@{'/new'}">Add new Product</a></h3>     
+	    </div>
+	
+	</tr>
+	<tr>
+	
+	<div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" >
+                 <table class="table">
+  <thead class="thead-dark">
+    <tr>
+            <th>Product ID</th>
+      		<th>Product name</th>
+            <th>product Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Edit</th>
+            <th>Delete</th>
+   	</tr>
+  </thead>
+  <tbody>
+      <tr  th:each="Product : ${listproduct}">
+		<td th:text="${Product.id}">Product ID</td>
+		<td th:text="${Product.product_name}">Product name</td>
+		<td th:text="${Product.product_description}">Product Description</td>
+		<td th:text="${Product.product_price}">Price</td>	
+		<td th:text="${Product.stock}">Stock</td>				
+		<td>
+			<a th:href="@{'/edit/' + ${Product.id}}">Edit</a>
+		</td>							    
+		<td>
+			<a th:href="@{'/delete/' + ${Product.id}}">Delete</a>
+		</td>		    
+		</tr> 
+   
+  </tbody>
+</table>
+                    
+                 </div>
+
+            </div> 
+
+	</tr>
+
+	</tbody>
+	</table>
+	<div>
+	
+</body>
+</html>
